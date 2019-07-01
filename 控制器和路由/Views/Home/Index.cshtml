@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<link rel="stylesheet" href="@Url.Action("Css")" type="text/css" />
+
+<div>
+    @using (Html.BeginForm())
+    {
+        string theme = ViewBag.theme;
+    <div>
+        @Html.RadioButton("theme", "default",theme=="default")<span>默认主题（宋体）</span>
+        @Html.RadioButton("theme", "theme1",theme=="theme1")<span>默认1（黑体）</span>
+        @Html.RadioButton("theme", "theme2",theme=="theme2")<span>主题2（楷体）</span>
+    </div>
+    <div>
+        <input type="submit" value="提交" />
+    </div>
+    }
+</div>
