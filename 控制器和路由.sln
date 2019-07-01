@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET MVC", "ASP.NET MVC"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyAs", "CopyAs\CopyAs.csproj", "{F056B5D4-8104-4184-8492-6A4E1AC0976D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "过滤器", "过滤器\过滤器.csproj", "{9BCE751C-2DD2-48E6-A538-3E4A64BB87DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{F056B5D4-8104-4184-8492-6A4E1AC0976D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F056B5D4-8104-4184-8492-6A4E1AC0976D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F056B5D4-8104-4184-8492-6A4E1AC0976D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BCE751C-2DD2-48E6-A538-3E4A64BB87DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BCE751C-2DD2-48E6-A538-3E4A64BB87DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BCE751C-2DD2-48E6-A538-3E4A64BB87DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BCE751C-2DD2-48E6-A538-3E4A64BB87DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F056B5D4-8104-4184-8492-6A4E1AC0976D} = {213A532F-D8A1-4069-A8BB-B04C9253DD7F}
+		{9BCE751C-2DD2-48E6-A538-3E4A64BB87DD} = {213A532F-D8A1-4069-A8BB-B04C9253DD7F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1905DEF-18B2-4F05-8CAA-971A3ADD0D72}
