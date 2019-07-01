@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "控制器和路由", "控�
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET MVC", "ASP.NET MVC", "{213A532F-D8A1-4069-A8BB-B04C9253DD7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyAs", "CopyAs\CopyAs.csproj", "{F056B5D4-8104-4184-8492-6A4E1AC0976D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,9 +19,16 @@ Global
 		{F70DC884-CE24-49BC-9F2F-7993958C9B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F70DC884-CE24-49BC-9F2F-7993958C9B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F70DC884-CE24-49BC-9F2F-7993958C9B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F056B5D4-8104-4184-8492-6A4E1AC0976D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F056B5D4-8104-4184-8492-6A4E1AC0976D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F056B5D4-8104-4184-8492-6A4E1AC0976D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F056B5D4-8104-4184-8492-6A4E1AC0976D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F056B5D4-8104-4184-8492-6A4E1AC0976D} = {213A532F-D8A1-4069-A8BB-B04C9253DD7F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1905DEF-18B2-4F05-8CAA-971A3ADD0D72}

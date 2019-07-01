@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -56,18 +57,17 @@ namespace 控制器和路由.Controllers
             return file;
         }
 
-        public ActionResult About()
+        public ActionResult Down(string id)
         {
-            ViewBag.Message = "Your application description page.";
+            string path = Server.MapPath("/Images/" + id + ".png");
 
-            return View();
+            string name = Path.GetFileName(path);
+
+            
+            
+            return File(path,"image/png",name);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+     
     }
 }
