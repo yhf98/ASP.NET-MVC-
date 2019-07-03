@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="meixinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="m_admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uname" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="pwd" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="m_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="500" />
+          <Property Name="address" Type="varchar" MaxLength="500" />
+          <Property Name="sendtime" Type="varchar" MaxLength="500" />
+          <Property Name="message" Type="varchar" MaxLength="500" />
+          <Property Name="status" Type="varchar" MaxLength="500" />
+          <Property Name="ordertime" Type="datetime" />
+          <Property Name="m_user_email" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="total" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="m_orderdetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="m_order_id" Type="int" Nullable="false" />
+          <Property Name="m_product_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="m_product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pname" Type="varchar" MaxLength="500" />
+          <Property Name="photo" Type="varchar" MaxLength="500" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="flavor" Type="varchar" MaxLength="500" />
+          <Property Name="category" Type="varchar" MaxLength="500" />
+          <Property Name="status" Type="varchar" MaxLength="500" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="m_shop_id" Type="int" Nullable="false" />
+          <Property Name="m_area_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="m_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="pwd" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="logintime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_m_orderdetailsm_product">
+          <End Role="m_product" Type="Self.m_product" Multiplicity="1" />
+          <End Role="m_orderdetails" Type="Self.m_orderdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="m_product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="m_orderdetails">
+              <PropertyRef Name="m_product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_m_orderm_orderdetails">
+          <End Role="m_order" Type="Self.m_order" Multiplicity="1" />
+          <End Role="m_orderdetails" Type="Self.m_orderdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="m_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="m_orderdetails">
+              <PropertyRef Name="m_order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="meixinModelStoreContainer">
+          <EntitySet Name="m_admin" EntityType="Self.m_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_order" EntityType="Self.m_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_orderdetails" EntityType="Self.m_orderdetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_product" EntityType="Self.m_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_user" EntityType="Self.m_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_m_orderdetailsm_product" Association="Self.FK_m_orderdetailsm_product">
+            <End Role="m_product" EntitySet="m_product" />
+            <End Role="m_orderdetails" EntitySet="m_orderdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_m_orderm_orderdetails" Association="Self.FK_m_orderm_orderdetails">
+            <End Role="m_order" EntitySet="m_order" />
+            <End Role="m_orderdetails" EntitySet="m_orderdetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="meixinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="m_admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pwd" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="m_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="sendtime" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ordertime" Type="DateTime" Precision="3" />
+          <Property Name="m_user_email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="m_orderdetails" Relationship="Self.FK_m_orderm_orderdetails" FromRole="m_order" ToRole="m_orderdetails" />
+        </EntityType>
+        <EntityType Name="m_orderdetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="m_order_id" Type="Int32" Nullable="false" />
+          <Property Name="m_product_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="m_order" Relationship="Self.FK_m_orderm_orderdetails" FromRole="m_orderdetails" ToRole="m_order" />
+          <NavigationProperty Name="m_product" Relationship="Self.FK_m_orderdetailsm_product" FromRole="m_orderdetails" ToRole="m_product" />
+        </EntityType>
+        <EntityType Name="m_product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pname" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="flavor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="m_shop_id" Type="Int32" Nullable="false" />
+          <Property Name="m_area_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="m_orderdetails" Relationship="Self.FK_m_orderdetailsm_product" FromRole="m_product" ToRole="m_orderdetails" />
+        </EntityType>
+        <EntityType Name="m_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pwd" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="logintime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_m_orderm_orderdetails">
+          <End Role="m_order" Type="Self.m_order" Multiplicity="1" />
+          <End Role="m_orderdetails" Type="Self.m_orderdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="m_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="m_orderdetails">
+              <PropertyRef Name="m_order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_m_orderdetailsm_product">
+          <End Role="m_product" Type="Self.m_product" Multiplicity="1" />
+          <End Role="m_orderdetails" Type="Self.m_orderdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="m_product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="m_orderdetails">
+              <PropertyRef Name="m_product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="meixinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="m_admin" EntityType="Self.m_admin" />
+          <EntitySet Name="m_order" EntityType="Self.m_order" />
+          <EntitySet Name="m_orderdetails" EntityType="Self.m_orderdetails" />
+          <EntitySet Name="m_product" EntityType="Self.m_product" />
+          <EntitySet Name="m_user" EntityType="Self.m_user" />
+          <AssociationSet Name="FK_m_orderm_orderdetails" Association="Self.FK_m_orderm_orderdetails">
+            <End Role="m_order" EntitySet="m_order" />
+            <End Role="m_orderdetails" EntitySet="m_orderdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_m_orderdetailsm_product" Association="Self.FK_m_orderdetailsm_product">
+            <End Role="m_product" EntitySet="m_product" />
+            <End Role="m_orderdetails" EntitySet="m_orderdetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="meixinModelStoreContainer" CdmEntityContainer="meixinEntities">
+          <EntitySetMapping Name="m_admin">
+            <EntityTypeMapping TypeName="meixinModel.m_admin">
+              <MappingFragment StoreEntitySet="m_admin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="uname" ColumnName="uname" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_order">
+            <EntityTypeMapping TypeName="meixinModel.m_order">
+              <MappingFragment StoreEntitySet="m_order">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="sendtime" ColumnName="sendtime" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ordertime" ColumnName="ordertime" />
+                <ScalarProperty Name="m_user_email" ColumnName="m_user_email" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_orderdetails">
+            <EntityTypeMapping TypeName="meixinModel.m_orderdetails">
+              <MappingFragment StoreEntitySet="m_orderdetails">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="m_order_id" ColumnName="m_order_id" />
+                <ScalarProperty Name="m_product_id" ColumnName="m_product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_product">
+            <EntityTypeMapping TypeName="meixinModel.m_product">
+              <MappingFragment StoreEntitySet="m_product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pname" ColumnName="pname" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="flavor" ColumnName="flavor" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="m_shop_id" ColumnName="m_shop_id" />
+                <ScalarProperty Name="m_area_id" ColumnName="m_area_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_user">
+            <EntityTypeMapping TypeName="meixinModel.m_user">
+              <MappingFragment StoreEntitySet="m_user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="logintime" ColumnName="logintime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

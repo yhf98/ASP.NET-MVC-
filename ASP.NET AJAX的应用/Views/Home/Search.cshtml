@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>产品查询</h2>
+
+@using (Ajax.BeginForm("Search", new AjaxOptions() {
+
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod="GET",
+        OnFailure="searchFailure",
+        UpdateTargetId="data"
+
+}))
+
+ {
+<div>
+    <span>查询关键字：</span>
+    <input type="text" name="key" value="" />
+    <input type="submit" value="查询" />
+</div>
+ }
+
+<div id="data">
+
+</div>
+
