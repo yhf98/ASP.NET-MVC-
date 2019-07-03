@@ -1,0 +1,20 @@
+﻿
+1.Confirm: 确认窗体（弹框）
+
+2.HttpMethod: Ajax与后台通信的方法
+
+3.InsertionMode:响应后的内容，如何插入到当前的页面
+
+4.LoaddingElement: 当请求花费时间较长，用来显示提示页面元素
+
+5.OnBegin:请求开始时要执行的处理
+
+6.OnComplete:当请求完成时所要执行的处理
+
+7.Onfailure:当请求失败时要执行的处理
+
+8.OnSuccess:当请求成功要执行的处理
+
+9.UpdataTargetld: 服务器响应的内容所要更新的页面的元素ID
+
+10 URL:发送请求的服务器Url (控制器/方法)
