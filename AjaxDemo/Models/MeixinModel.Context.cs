@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace ASP.NET_AJAX的应用.Models
+namespace AjaxDemo.Models
 {
     public partial class meixinEntities : DbContext
     {

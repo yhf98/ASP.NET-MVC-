@@ -1,8 +1,8 @@
-namespace ASP.NET_AJAX的应用.Models
+namespace AjaxDemo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class m_admin
     {
         public int ID { get; set; }

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using 过滤器.Filter;
+using FilterDemo.Filter;
 
-namespace 过滤器.Controllers
+namespace FilterDemo.Controllers
 {
     public class HomeController : Controller
     {
