@@ -1,7 +1,7 @@
-using ASP.NET_AJAX的应用.Models;
+using AjaxDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ASP.NET_AJAX的应用.Controllers
+namespace AjaxDemo.Controllers
 {
     public class HomeController : Controller
     {

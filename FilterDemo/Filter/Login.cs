@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace 过滤器.Filter
+namespace FilterDemo.Filter
 {
     public class Login : ActionFilterAttribute
     {

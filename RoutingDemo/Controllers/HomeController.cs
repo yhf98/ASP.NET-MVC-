@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace 控制器和路由.Controllers
+namespace RoutingDemo.Controllers
 {
     public class HomeController : Controller
     {
