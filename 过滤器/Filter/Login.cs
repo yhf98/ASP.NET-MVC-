@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace 过滤器.Filter
 {
-    public class Login:ActionFilterAttribute
+    public class Login : ActionFilterAttribute
     {
         public bool IsChecked { get; set; }
 
@@ -16,9 +13,9 @@ namespace 过滤器.Filter
 
             if (IsChecked)
             {
-                if (filterContext.HttpContext.Session["username"] == null)
+                if (filterContext.HttpContext.Session.GetString("username") == null)
                 {
-                    filterContext.HttpContext.Response.Redirect("/Home/Login");
+                    filterContext.Result = new RedirectResult("/Home/Login");
                 }
             }
         }

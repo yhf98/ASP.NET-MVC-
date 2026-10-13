@@ -1,28 +1,27 @@
-﻿
+
 @{
     ViewBag.Title = "Search";
 }
 
 <h2>产品查询</h2>
 
-@using (Ajax.BeginForm("Search", new AjaxOptions() {
-
-        InsertionMode = InsertionMode.Replace,
-        HttpMethod="GET",
-        OnFailure="searchFailure",
-        UpdateTargetId="data"
-
-}))
-
- {
+<form action="@Url.Action("Search")" method="get" data-ajax="true" data-ajax-method="GET"
+      data-ajax-mode="replace" data-ajax-update="#data" data-ajax-failure="searchFailure">
 <div>
     <span>查询关键字：</span>
     <input type="text" name="key" value="" />
     <input type="submit" value="查询" />
 </div>
- }
+</form>
 
 <div id="data">
 
 </div>
 
+@section scripts {
+    <script>
+        function searchFailure() {
+            alert("查询失败");
+        }
+    </script>
+}

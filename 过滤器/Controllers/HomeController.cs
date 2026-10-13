@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using 过滤器.Filter;
 
 namespace 过滤器.Controllers
 {
     public class HomeController : Controller
     {
-        [Login(IsChecked =true)]
-        public ActionResult Index()
+        [Login(IsChecked = true)]
+        public IActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Login(string username,string pwd)
+        public IActionResult Login(string username, string pwd)
         {
             if (username == "123" && pwd == "123")
             {
-                Session["username"] = "123";
+                HttpContext.Session.SetString("username", "123");
                 return Redirect("/Home/Index");
             }
             else
@@ -29,17 +25,22 @@ namespace 过滤器.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public IActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public IActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public IActionResult Error()
+        {
             return View();
         }
     }
