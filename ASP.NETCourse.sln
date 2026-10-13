@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "控制器和路由", "控制器和路由\控制器和路由.csproj", "{F70DC884-CE24-49BC-9F2F-7993958C9B92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "控制器和路由", "控制器和路由\控制器和路由.csproj", "{F70DC884-CE24-49BC-9F2F-7993958C9B92}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET MVC", "ASP.NET MVC", "{213A532F-D8A1-4069-A8BB-B04C9253DD7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyAs", "CopyAs\CopyAs.csproj", "{F056B5D4-8104-4184-8492-6A4E1AC0976D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopyAs", "CopyAs\CopyAs.csproj", "{F056B5D4-8104-4184-8492-6A4E1AC0976D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "过滤器", "过滤器\过滤器.csproj", "{9BCE751C-2DD2-48E6-A538-3E4A64BB87DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "过滤器", "过滤器\过滤器.csproj", "{9BCE751C-2DD2-48E6-A538-3E4A64BB87DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET AJAX的应用", "ASP.NET AJAX的应用\ASP.NET AJAX的应用.csproj", "{45B01AD1-236B-4DCF-A840-87ECE3CB4951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP.NET AJAX的应用", "ASP.NET AJAX的应用\ASP.NET AJAX的应用.csproj", "{45B01AD1-236B-4DCF-A840-87ECE3CB4951}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

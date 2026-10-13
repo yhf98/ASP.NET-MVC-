@@ -1,43 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace 控制器和路由.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly IWebHostEnvironment _env;
+
+        public HomeController(IWebHostEnvironment env)
         {
-            
-            HttpCookie cookie = Request.Cookies["theme"]??new HttpCookie("theme","default");
-            ViewBag.theme = cookie.Value;
+            _env = env;
+        }
+
+        public IActionResult Index()
+        {
+            ViewBag.theme = Request.Cookies["theme"] ?? "default";
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(string theme)
+        public IActionResult Index(string theme)
         {
-            HttpCookie cookie = new HttpCookie("theme",theme);
-            cookie.Expires = DateTime.MaxValue;
-            Response.SetCookie(cookie);
-            ViewBag.theme = cookie.Value;
+            theme ??= "default";
+            Response.Cookies.Append("theme", theme, new CookieOptions { Expires = DateTimeOffset.MaxValue });
+            ViewBag.theme = theme;
             return View();
         }
 
-        
-        public ActionResult Css()
+        public IActionResult Css()
         {
-            HttpCookie cookie = Request.Cookies["theme"]??new HttpCookie("theme","default");
-
-            switch (cookie.Value)
+            switch (Request.Cookies["theme"])
             {
                 case "theme1":
 
-                    return Content("body{font-family:SimHei;font-size:1.2em;color:red;}","text/css");
+                    return Content("body{font-family:SimHei;font-size:1.2em;color:red;}", "text/css");
 
                 case "theme2":
 
@@ -49,25 +45,32 @@ namespace 控制器和路由.Controllers
             }
         }
 
-        public ActionResult Image(string id)
+        public IActionResult Image(string id)
         {
             if (string.IsNullOrEmpty(id)) return View();
-            string path = Server.MapPath("/Images/" + id+".png");
-            FileResult file= File(path, "image/png");
-            return file;
+            string path = ImagePath(id);
+            if (!System.IO.File.Exists(path)) return NotFound();
+            return PhysicalFile(path, "image/png");
         }
 
-        public ActionResult Down(string id)
+        public IActionResult Down(string id)
         {
-            string path = Server.MapPath("/Images/" + id + ".png");
+            string path = ImagePath(id);
+            if (!System.IO.File.Exists(path)) return NotFound();
 
             string name = Path.GetFileName(path);
 
-            
-            
-            return File(path,"image/png",name);
+            return PhysicalFile(path, "image/png", name);
         }
 
-     
+        public IActionResult Error()
+        {
+            return View();
+        }
+
+        private string ImagePath(string id)
+        {
+            return Path.Combine(_env.WebRootPath, "Images", Path.GetFileName(id ?? "") + ".png");
+        }
     }
 }

@@ -1,52 +1,56 @@
-﻿using ASP.NET_AJAX的应用.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using ASP.NET_AJAX的应用.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_AJAX的应用.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly meixinEntities _db;
+
+        public HomeController(meixinEntities db)
+        {
+            _db = db;
+        }
+
+        public IActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Search(string key)
+        public IActionResult Search(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
                 return View();
             }
-            using (meixinEntities db = new meixinEntities())
-            {
-                var goods = db.m_product.ToList();
-                var result = goods.FindAll(F => F.pname.Contains(""));
-                return PartialView("_source", result);
-            }
+            var result = _db.m_product.Where(p => p.pname.Contains(key)).ToList();
+            return PartialView("_source", result);
         }
 
-        public ActionResult Go()
+        public IActionResult Go()
         {
 
-            ViewBag.Items = new string [] {"王二狗","WANNNG", "王二狗", "WANNNG", "王二狗", "WANNNG" };
+            ViewBag.Items = new string[] { "王二狗", "WANNNG", "王二狗", "WANNNG", "王二狗", "WANNNG" };
 
             return PartialView("_data");
         }
 
-        public ActionResult About()
+        public IActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public IActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public IActionResult Error()
+        {
             return View();
         }
     }

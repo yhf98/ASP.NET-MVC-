@@ -1,13 +1,9 @@
-﻿
+
 @{
 
     ViewBag.Title = "Index";
 
 }
-
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-
 
 <h2>Ajax的应用</h2>
 
@@ -16,13 +12,7 @@
 </div>
 
 <div id="div1">
-    @Ajax.ActionLink("显示项目", "Go", new AjaxOptions()
-    {
-        UpdateTargetId = "data",
-        InsertionMode = InsertionMode.Replace,
-        HttpMethod = "GET"
-    })
-
+    <a href="@Url.Action("Go")" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#data">显示项目</a>
     @Html.ActionLink("HTML显示项目", "Go")
 </div>
 
